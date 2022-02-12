@@ -1,0 +1,24 @@
+name: podex
+description: A new Flutter package project.
+version: 0.0.1
+homepage: mehmetesen.com
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+  flutter: ">=2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.0.0-dev.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  test_utils:
+    git:
+      url: https://github.com/esenmx/test_utils
+      ref: main
+
+flutter:
