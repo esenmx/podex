@@ -16,6 +16,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  mockito: ^5.1.0
+  fake_async: ^1.2.0
   test_utils:
     git:
       url: https://github.com/esenmx/test_utils

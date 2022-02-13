@@ -1,9 +1,1 @@
-*.dart linguist-detectable=true
-*.kt linguist-detectable=false
-*.swift linguist-detectable=false
-*.java linguist-detectable=false
-*.cc linguist-detectable=false
-*.h linguist-detectable=false
-*.cpp linguist-detectable=false
-*.m linguist-detectable=false
-*.js linguist-detectable=false
+example/** linguist-vendored

@@ -4,19 +4,23 @@ class DebouncedStateNotifier<T> extends StateNotifier<T> {
   DebouncedStateNotifier(T value, {required this.duration}) : super(value);
 
   final Duration duration;
-  Timer? _debounce;
+  Timer? _timer;
 
   @override
   set state(T value) {
-    if (_debounce?.isActive == true) {
-      _debounce?.cancel();
+    if (_timer?.isActive == true) {
+      _timer?.cancel();
     }
-    _debounce = Timer(duration, () => super.state = value);
+    _timer = Timer(duration, () => super.state = value);
+  }
+
+  void update(T value) {
+    state = value;
   }
 
   @override
   void dispose() {
-    _debounce?.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
