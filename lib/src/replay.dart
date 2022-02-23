@@ -1,6 +1,7 @@
 part of podex;
 
-class ReplayNotifier<T> extends StateNotifier<T> {
+class ReplayNotifier<T> extends StateNotifier<T>
+    with _StateNotifierUpdateMixin<T> {
   ReplayNotifier(state, {this.size = 10})
       : _queue = Queue.from([state]),
         super(state) {

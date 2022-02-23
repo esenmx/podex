@@ -1,6 +1,7 @@
 part of podex;
 
-class ThrottleFirstStateNotifier<T> extends StateNotifier<T> {
+class ThrottleFirstStateNotifier<T> extends StateNotifier<T>
+    with _StateNotifierUpdateMixin<T> {
   ThrottleFirstStateNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
@@ -21,7 +22,8 @@ class ThrottleFirstStateNotifier<T> extends StateNotifier<T> {
   }
 }
 
-class ThrottleLastStateNotifier<T> extends StateNotifier<T> {
+class ThrottleLastStateNotifier<T> extends StateNotifier<T>
+    with _StateNotifierUpdateMixin<T> {
   ThrottleLastStateNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
@@ -43,7 +45,8 @@ class ThrottleLastStateNotifier<T> extends StateNotifier<T> {
   }
 }
 
-class ThrottleLatestStateNotifier<T> extends StateNotifier<T> {
+class ThrottleLatestStateNotifier<T> extends StateNotifier<T>
+    with _StateNotifierUpdateMixin<T> {
   ThrottleLatestStateNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
