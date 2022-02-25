@@ -12,12 +12,12 @@ void main() async {
     final container = ProviderContainer();
     final listener = PreviousNextListener();
     addTearDown(container.dispose);
+    final notifier = container.read(debounced.notifier);
 
     container.listen(debounced, listener);
     expect(container.read(debounced), '');
-    verifyNoMoreInteractions(listener);
 
-    container.read(debounced.notifier).update('asd');
+    notifier.update('asd');
     listener.verifyNotCalled('', 'asd');
     await Future.delayed(duration);
     listener.verifyCalledOnce('', 'asd');
@@ -25,7 +25,7 @@ void main() async {
     // Sequential update within debounce duration
     for (int i = 0; i < 10; i++) {
       await Future.delayed(duration ~/ 2);
-      container.read(debounced.notifier).update(i.toString());
+      notifier.update(i.toString());
     }
     // Ensuring state is not updated except the last update
     await Future.delayed(duration);
