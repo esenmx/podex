@@ -10,13 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.0.0-dev.3
+  state_notifier: ">=0.7.2+1 <1.0.0"
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
   fake_async: ^1.2.0
+  flutter_riverpod: ^2.0.0-dev.3
   test_utils:
     git:
       url: https://github.com/esenmx/test_utils
