@@ -14,8 +14,7 @@ class ReplayNotifier<T> extends StateNotifier<T>
   @override
   set state(T value) {
     if (_currentIndex > 0) {
-      _queue = Queue<T>.of(_queue.skip(_currentIndex));
-      _queue.addFirst(value);
+      _queue = Queue<T>.of(_queue.skip(_currentIndex))..addFirst(value);
       _currentIndex = 0;
     } else {
       _queue.addFirst(value);

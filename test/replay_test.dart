@@ -62,8 +62,9 @@ void main() async {
       ..update(2) // [1, 2]
       ..update(3) // [1, 2, 3]
       ..undo() // [1, 2]
-      ..update(4) // [1, 2, 4]
-      ..undo(); // [1, 2]
+      ..update(4); // [1, 2, 4]
+    expect(container.read(replay), 4);
+    notifier.undo();
     expect(container.read(replay), 2);
     notifier.undo();
     expect(container.read(replay), 1);
@@ -73,5 +74,16 @@ void main() async {
     notifier.redo();
     expect(container.read(replay), 4);
     expect(() => notifier.redo(), throwsA(isA<StateError>()));
+
+    /// OverFill
+    for (int i = 0; i < 100; i++) {
+      notifier.update(i);
+    }
+    expect(container.read(replay), 99);
+    for (int i = 1; i < 10; i++) {
+      notifier.undo();
+      expect(container.read(replay), 99 - i);
+    }
+    expect(() => notifier.undo(), throwsA(isA<StateError>()));
   });
 }
