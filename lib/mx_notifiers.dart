@@ -1,4 +1,4 @@
-library podex;
+library mx_notifiers;
 
 import 'dart:async';
 import 'dart:collection';

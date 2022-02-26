@@ -1,4 +1,4 @@
-part of podex;
+part of mx_notifiers;
 
 class ReplayNotifier<T> extends StateNotifier<T>
     with _StateNotifierUpdateMixin<T> {
@@ -48,4 +48,9 @@ class ReplayNotifier<T> extends StateNotifier<T>
   bool get canUndo => _currentIndex < (_queue.length - 1);
 
   bool get canRedo => _currentIndex > 0;
+
+  @override
+  String toString() {
+    return 'ReplayNotifier<$T>{state: $state}';
+  }
 }

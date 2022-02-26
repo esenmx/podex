@@ -1,4 +1,4 @@
-part of podex;
+part of mx_notifiers;
 
 class ThrottleFirstStateNotifier<T> extends StateNotifier<T>
     with _StateNotifierUpdateMixin<T> {
@@ -19,6 +19,11 @@ class ThrottleFirstStateNotifier<T> extends StateNotifier<T>
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+
+  @override
+  String toString() {
+    return 'ThrottleFirstStateNotifier<$T>{state: $state}';
   }
 }
 
@@ -42,6 +47,11 @@ class ThrottleLastStateNotifier<T> extends StateNotifier<T>
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+
+  @override
+  String toString() {
+    return 'ThrottleLastStateNotifier<$T>{state: $state}';
   }
 }
 
@@ -74,5 +84,10 @@ class ThrottleLatestStateNotifier<T> extends StateNotifier<T>
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+
+  @override
+  String toString() {
+    return 'ThrottleLatestStateNotifier<$T>{state: $state}';
   }
 }

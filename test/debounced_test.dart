@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:podex/podex.dart';
+import 'package:mx_notifiers/mx_notifiers.dart';
 import 'package:test_utils/test_utils.dart';
 
 const duration = Duration(milliseconds: 5);

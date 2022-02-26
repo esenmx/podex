@@ -1,7 +1,8 @@
-name: podex
-description: A new Flutter package project.
-version: 0.0.1
-homepage: mehmetesen.com
+name: mx_notifiers
+description: Collection of should have StateNotifiers for combining with Riverpod/Provider
+version: 1.0.0
+homepage: http://mehmetesen.com
+repository: https://github.com/esenmx/mx_notifiers/
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -16,7 +17,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-  fake_async: ^1.2.0
   flutter_riverpod: ^2.0.0-dev.3
   test_utils:
     git:

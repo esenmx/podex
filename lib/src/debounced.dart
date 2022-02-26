@@ -1,4 +1,4 @@
-part of podex;
+part of mx_notifiers;
 
 class DebouncedStateNotifier<T> extends StateNotifier<T>
     with _StateNotifierUpdateMixin<T> {
@@ -23,27 +23,27 @@ class DebouncedStateNotifier<T> extends StateNotifier<T>
 
   @override
   String toString() {
-    return 'DebouncedStateNotifier{state: $state}';
+    return 'DebouncedStateNotifier<$T>{state: $state}';
   }
 }
 
 ///
 /// https://twitter.com/remi_rousselet/status/1493522569005305858
 ///
-extension DebounceRefExtension on Ref {
-  Future<void> debounce(Duration duration) async {
-    final completer = Completer<void>();
-    final timer = Timer(duration, () {
-      if (!completer.isCompleted) {
-        completer.complete();
-      }
-    });
-    onDispose(() {
-      timer.cancel();
-      if (!completer.isCompleted) {
-        completer.completeError(StateError('completed'));
-      }
-    });
-    return completer.future;
-  }
-}
+// extension DebounceRefExtension on Ref {
+//   Future<void> debounce(Duration duration) async {
+//     final completer = Completer<void>();
+//     final timer = Timer(duration, () {
+//       if (!completer.isCompleted) {
+//         completer.complete();
+//       }
+//     });
+//     onDispose(() {
+//       timer.cancel();
+//       if (!completer.isCompleted) {
+//         completer.completeError(StateError('completed'));
+//       }
+//     });
+//     return completer.future;
+//   }
+// }
