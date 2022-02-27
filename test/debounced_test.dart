@@ -1,11 +1,12 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:podex/podex.dart';
+import 'package:riverpod/riverpod.dart';
+import 'package:test/test.dart';
 import 'package:test_utils/test_utils.dart';
 
 const duration = Duration(milliseconds: 5);
 
 final debounced = StateNotifierProvider(
-    (ref) => DebouncedStateNotifier<String>('', duration: duration));
+    (ref) => DebouncedNotifier<String>('', duration: duration));
 
 void main() async {
   test('Debounced', () async {
@@ -34,5 +35,8 @@ void main() async {
     }
     // Ensuring last update is emitted
     listener.verifyCalledOnce('asd', '9');
+
+    // toString
+    expect(notifier.toString(), 'DebouncedNotifier<String>{state: 9}');
   });
 }

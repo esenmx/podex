@@ -1,8 +1,8 @@
 part of podex;
 
-class DebouncedStateNotifier<T> extends StateNotifier<T>
-    with _StateNotifierUpdateMixin<T> {
-  DebouncedStateNotifier(T value, {required this.duration}) : super(value);
+class DebouncedNotifier<T> extends StateNotifier<T>
+    with _PodexStateNotifierMixin<T> {
+  DebouncedNotifier(T value, {required this.duration}) : super(value);
 
   final Duration duration;
   Timer? _timer;
@@ -19,11 +19,6 @@ class DebouncedStateNotifier<T> extends StateNotifier<T>
   void dispose() {
     _timer?.cancel();
     super.dispose();
-  }
-
-  @override
-  String toString() {
-    return 'DebouncedStateNotifier<$T>{state: $state}';
   }
 }
 

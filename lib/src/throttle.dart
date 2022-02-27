@@ -1,8 +1,8 @@
 part of podex;
 
-class ThrottleFirstStateNotifier<T> extends StateNotifier<T>
-    with _StateNotifierUpdateMixin<T> {
-  ThrottleFirstStateNotifier(T state, {required this.duration}) : super(state);
+class ThrottleFirstNotifier<T> extends StateNotifier<T>
+    with _PodexStateNotifierMixin<T> {
+  ThrottleFirstNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
   Timer? _timer;
@@ -20,16 +20,11 @@ class ThrottleFirstStateNotifier<T> extends StateNotifier<T>
     _timer?.cancel();
     super.dispose();
   }
-
-  @override
-  String toString() {
-    return 'ThrottleFirstStateNotifier<$T>{state: $state}';
-  }
 }
 
-class ThrottleLastStateNotifier<T> extends StateNotifier<T>
-    with _StateNotifierUpdateMixin<T> {
-  ThrottleLastStateNotifier(T state, {required this.duration}) : super(state);
+class ThrottleLastNotifier<T> extends StateNotifier<T>
+    with _PodexStateNotifierMixin<T> {
+  ThrottleLastNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
   Timer? _timer;
@@ -48,20 +43,15 @@ class ThrottleLastStateNotifier<T> extends StateNotifier<T>
     _timer?.cancel();
     super.dispose();
   }
-
-  @override
-  String toString() {
-    return 'ThrottleLastStateNotifier<$T>{state: $state}';
-  }
 }
 
-class ThrottleLatestStateNotifier<T> extends StateNotifier<T>
-    with _StateNotifierUpdateMixin<T> {
-  ThrottleLatestStateNotifier(T state, {required this.duration}) : super(state);
+class ThrottleLatestNotifier<T> extends StateNotifier<T>
+    with _PodexStateNotifierMixin<T> {
+  ThrottleLatestNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
   Timer? _timer;
-  late T _latest;
+  late T _temp;
   bool _hasLatest = false;
 
   @override
@@ -70,13 +60,13 @@ class ThrottleLatestStateNotifier<T> extends StateNotifier<T>
       super.state = value;
       _timer = Timer(duration, () {
         if (_hasLatest) {
+          super.state = _temp;
           _hasLatest = false;
-          super.state = _latest;
         }
       });
     } else {
+      _temp = value;
       _hasLatest = true;
-      _latest = value;
     }
   }
 
@@ -84,10 +74,5 @@ class ThrottleLatestStateNotifier<T> extends StateNotifier<T>
   void dispose() {
     _timer?.cancel();
     super.dispose();
-  }
-
-  @override
-  String toString() {
-    return 'ThrottleLatestStateNotifier<$T>{state: $state}';
   }
 }

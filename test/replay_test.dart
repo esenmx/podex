@@ -1,5 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:podex/podex.dart';
+import 'package:riverpod/riverpod.dart';
+import 'package:test/test.dart';
 import 'package:test_utils/test_utils.dart';
 
 final replay = StateNotifierProvider((ref) => ReplayNotifier<int>(1));
@@ -85,5 +86,7 @@ void main() async {
       expect(container.read(replay), 99 - i);
     }
     expect(() => notifier.undo(), throwsA(isA<StateError>()));
+
+    expect(notifier.toString(), 'ReplayNotifier<int>{state: 90}');
   });
 }

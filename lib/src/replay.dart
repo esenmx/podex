@@ -1,7 +1,7 @@
 part of podex;
 
 class ReplayNotifier<T> extends StateNotifier<T>
-    with _StateNotifierUpdateMixin<T> {
+    with _PodexStateNotifierMixin<T> {
   ReplayNotifier(T initialState, {this.capacity = 10})
       : _queue = Queue<T>.of([initialState]),
         super(initialState);
@@ -48,9 +48,4 @@ class ReplayNotifier<T> extends StateNotifier<T>
   bool get canUndo => _currentIndex < (_queue.length - 1);
 
   bool get canRedo => _currentIndex > 0;
-
-  @override
-  String toString() {
-    return 'ReplayNotifier<$T>{state: $state}';
-  }
 }
