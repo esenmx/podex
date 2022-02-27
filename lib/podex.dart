@@ -1,9 +1,9 @@
-library mx_notifiers;
+library podex;
 
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:state_notifier/state_notifier.dart';
 
 part 'src/debounced.dart';
 part 'src/replay.dart';

@@ -1,4 +1,4 @@
-part of mx_notifiers;
+part of podex;
 
 class ThrottleFirstStateNotifier<T> extends StateNotifier<T>
     with _StateNotifierUpdateMixin<T> {
