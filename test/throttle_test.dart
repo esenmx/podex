@@ -14,8 +14,8 @@ final latestProvider = StateNotifierProvider(
     (ref) => ThrottleLatestStateNotifier(0, duration: duration));
 
 void main() async {
-  late final ProviderContainer container;
-  late final PreviousNextListener listener;
+  late ProviderContainer container;
+  late PreviousNextListener listener;
 
   setUp(() {
     container = ProviderContainer();
