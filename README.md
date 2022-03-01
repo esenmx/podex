@@ -3,4 +3,4 @@
 Collection of should have `Provider`s
 for [Riverpod](https://pub.dev/documentation/flutter_riverpod/latest/flutter_riverpod/ChangeNotifierProvider-class.html)
 
-Under development...(Required better testing)
+Under development...(Requires better testing)
