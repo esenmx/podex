@@ -29,3 +29,8 @@
 build/
 /coverage/
 /example/pubspec.lock
+/example/macos/
+/example/.idea
+/example/.dart_tool
+/example/.packages
+/example/example.iml

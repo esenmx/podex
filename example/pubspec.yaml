@@ -29,6 +29,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_riverpod:
+  podex:
+    path: ../
 
 
   # The following adds the Cupertino Icons font to your application.
