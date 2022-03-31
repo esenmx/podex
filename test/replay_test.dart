@@ -7,9 +7,8 @@ final replay = StateNotifierProvider((ref) => ReplayNotifier<int>(1));
 
 void main() async {
   test('Replay', () async {
-    final container = ProviderContainer();
+    final container = createProviderContainer();
     final listener = PreviousNextListener();
-    addTearDown(container.dispose);
     final notifier = container.read(replay.notifier);
 
     container.listen(replay, listener);

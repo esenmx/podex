@@ -29,7 +29,7 @@ class ReplayNotifier<T> extends StateNotifier<T>
     if (_currentIndex == 0) {
       throw StateError('''
       not able to `redo()`, if you cannot control the state,
-       please use `canRedo` getter for checking the state
+       please use `canRedo` getter for checking
       ''');
     }
     super.state = _queue.elementAt(--_currentIndex);
@@ -39,7 +39,7 @@ class ReplayNotifier<T> extends StateNotifier<T>
     if (_currentIndex + 1 == _queue.length) {
       throw StateError('''
       not able to `undo()`, if you cannot control the state,
-       please use `canUndo` getter for checking the state
+       please use `canUndo` getter for checking
       ''');
     }
     super.state = _queue.elementAt(++_currentIndex);

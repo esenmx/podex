@@ -10,9 +10,8 @@ final debounced = StateNotifierProvider(
 
 void main() async {
   test('Debounced', () async {
-    final container = ProviderContainer();
+    final container = createProviderContainer();
     final listener = PreviousNextListener();
-    addTearDown(container.dispose);
     final notifier = container.read(debounced.notifier);
 
     container.listen(debounced, listener);
