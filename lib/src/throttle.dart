@@ -1,7 +1,6 @@
 part of podex;
 
-class ThrottleFirstNotifier<T> extends StateNotifier<T>
-    with _PodexStateNotifierMixin<T> {
+class ThrottleFirstNotifier<T> extends StateNotifier<T> with _Mixin<T> {
   ThrottleFirstNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
@@ -22,8 +21,7 @@ class ThrottleFirstNotifier<T> extends StateNotifier<T>
   }
 }
 
-class ThrottleLastNotifier<T> extends StateNotifier<T>
-    with _PodexStateNotifierMixin<T> {
+class ThrottleLastNotifier<T> extends StateNotifier<T> with _Mixin<T> {
   ThrottleLastNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
@@ -45,28 +43,27 @@ class ThrottleLastNotifier<T> extends StateNotifier<T>
   }
 }
 
-class ThrottleLatestNotifier<T> extends StateNotifier<T>
-    with _PodexStateNotifierMixin<T> {
+class ThrottleLatestNotifier<T> extends StateNotifier<T> with _Mixin<T> {
   ThrottleLatestNotifier(T state, {required this.duration}) : super(state);
 
   final Duration duration;
   Timer? _timer;
   late T _temp;
-  bool _hasLatest = false;
+  bool _dirty = false;
 
   @override
   set state(T value) {
     if (_timer?.isActive != true) {
       super.state = value;
       _timer = Timer(duration, () {
-        if (_hasLatest) {
+        if (_dirty) {
           super.state = _temp;
-          _hasLatest = false;
+          _dirty = false;
         }
       });
     } else {
       _temp = value;
-      _hasLatest = true;
+      _dirty = true;
     }
   }
 

@@ -1,7 +1,6 @@
 part of podex;
 
-class DebouncedNotifier<T> extends StateNotifier<T>
-    with _PodexStateNotifierMixin<T> {
+class DebouncedNotifier<T> extends StateNotifier<T> with _Mixin<T> {
   DebouncedNotifier(T value, {required this.duration}) : super(value);
 
   final Duration duration;

@@ -19,7 +19,7 @@ part 'src/throttle.dart';
 /// ```dart
 /// onSelect: ref.read(stateProvider.notifier).update
 /// ```
-mixin _PodexStateNotifierMixin<T> on StateNotifier<T> {
+mixin _Mixin<T> on StateNotifier<T> {
   void update(T value) {
     state = value;
   }
