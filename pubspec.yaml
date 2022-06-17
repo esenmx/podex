@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   state_notifier: ">=0.7.2+1 <1.0.0"
-  meta: ^1.8.0
+  meta: 1.7.0
 
 dev_dependencies:
   clock: ^1.1.1
