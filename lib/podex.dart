@@ -5,6 +5,7 @@ import 'dart:collection';
 
 import 'package:state_notifier/state_notifier.dart';
 
+part 'src/stopwatch.dart';
 part 'src/debounced.dart';
 part 'src/duo.dart';
 part 'src/replay.dart';
