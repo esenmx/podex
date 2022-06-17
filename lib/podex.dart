@@ -3,12 +3,13 @@ library podex;
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:meta/meta.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-part 'src/stopwatch.dart';
 part 'src/debounced.dart';
 part 'src/duo.dart';
 part 'src/replay.dart';
+part 'src/stopwatch.dart';
 part 'src/throttle.dart';
 
 /// Syntax sugar for referential assignment;
