@@ -1,9 +1,10 @@
 part of podex;
 
 class ThrottleFirstNotifier<T> extends StateNotifier<T> with _Mixin<T> {
-  ThrottleFirstNotifier(T state, {required this.duration}) : super(state);
+  ThrottleFirstNotifier(super.state, {required this.duration});
 
   final Duration duration;
+
   Timer? _timer;
 
   @override
@@ -22,9 +23,10 @@ class ThrottleFirstNotifier<T> extends StateNotifier<T> with _Mixin<T> {
 }
 
 class ThrottleLastNotifier<T> extends StateNotifier<T> with _Mixin<T> {
-  ThrottleLastNotifier(T state, {required this.duration}) : super(state);
+  ThrottleLastNotifier(super.state, {required this.duration});
 
   final Duration duration;
+
   Timer? _timer;
   late T _last;
 
@@ -44,26 +46,25 @@ class ThrottleLastNotifier<T> extends StateNotifier<T> with _Mixin<T> {
 }
 
 class ThrottleLatestNotifier<T> extends StateNotifier<T> with _Mixin<T> {
-  ThrottleLatestNotifier(T state, {required this.duration}) : super(state);
+  ThrottleLatestNotifier(super.state, {required this.duration});
 
   final Duration duration;
+
   Timer? _timer;
-  late T _temp;
-  bool _dirty = false;
+  T? _pending;
 
   @override
   set state(T value) {
     if (_timer?.isActive != true) {
       super.state = value;
       _timer = Timer(duration, () {
-        if (_dirty) {
-          super.state = _temp;
-          _dirty = false;
+        if (_pending != null) {
+          super.state = _pending as T;
+          _pending = null;
         }
       });
     } else {
-      _temp = value;
-      _dirty = true;
+      _pending = value;
     }
   }
 

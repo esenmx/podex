@@ -1,9 +1,10 @@
 part of podex;
 
 class DebouncedNotifier<T> extends StateNotifier<T> with _Mixin<T> {
-  DebouncedNotifier(T value, {required this.duration}) : super(value);
+  DebouncedNotifier(super.state, {required this.duration});
 
   final Duration duration;
+
   Timer? _timer;
 
   @override

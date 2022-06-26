@@ -10,7 +10,7 @@
 // final stopwatch = StateNotifierProvider<StopwatchNotifier, Duration>(
 //     (ref) => StopwatchNotifier(period: d, stopwatch: clock.stopwatch()));
 
-// void main() {
+void main() {
 //   group('StopwatchNotifier', () {
 //     late ProviderContainer container;
 //     late StopwatchNotifier notifier;
@@ -46,4 +46,4 @@
 //   var result = callback();
 //   print('It took ${stopwatch.elapsed}!');
 //   return result;
-// }
+}

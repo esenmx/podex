@@ -1,9 +1,8 @@
 part of podex;
 
 class ReplayNotifier<T> extends StateNotifier<T> with _Mixin<T> {
-  ReplayNotifier(T initialState, {this.capacity = 10})
-      : _queue = Queue<T>.of([initialState]),
-        super(initialState);
+  ReplayNotifier(super.state, [this.capacity = 10])
+      : _queue = Queue<T>.of([state]);
 
   final int capacity;
 

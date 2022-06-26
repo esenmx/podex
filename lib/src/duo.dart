@@ -1,9 +1,7 @@
 part of podex;
 
 class DuoNotifier<T> extends StateNotifier<T> with _Mixin {
-  DuoNotifier(T initialState, [T? initialPrevious])
-      : _previous = initialPrevious,
-        super(initialState);
+  DuoNotifier(super.state, [this._previous]);
 
   T? _previous;
 
